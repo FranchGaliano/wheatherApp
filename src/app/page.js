@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import SearchButtons from '../../components/SearchButtons/SearchButtons';
 
 export default function Home() {
+  let lon;
+  let lat;
   const KEY = "9d5d3012597b909355a2c3e111416127";
-  const city = "Cusco";
+  const city = "Lima";
   const [info, setInfo] = useState();
 
   useEffect(()=>{
@@ -19,12 +21,37 @@ export default function Home() {
   }, []);
 
   console.log(info);
+
+  const handleLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((posicion) => {
+        lon = posicion.coords.longitude;
+        lat = posicion.coords.latitude;
+  
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=${KEY}`;
+  
+        fetch(url)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setInfo(data);
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    }
+};
+
+
   return (
     <main id="main-container">
       <section id="first-container">
-        <SearchButtons />
+        <SearchButtons handleLocation={handleLocation} />
 
-          
+      
         <div id="main-icon">
 
         </div>

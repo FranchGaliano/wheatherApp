@@ -21,6 +21,7 @@
     width: 30px;
     border-radius: 50px;
     border: none;
+    outline: none;
     background-color: #6E707A;
     cursor: pointer;
 }
