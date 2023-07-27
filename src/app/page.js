@@ -1,95 +1,74 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import Image from 'next/image';
+
+import { useEffect, useState } from "react";
+import SearchButtons from '../../components/SearchButtons/SearchButtons';
 
 export default function Home() {
+  const KEY = "9d5d3012597b909355a2c3e111416127";
+  const city = "Cusco";
+  const [info, setInfo] = useState();
+
+  useEffect(()=>{
+    const p1 = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${KEY}`);
+    console.log(p1);
+    Promise.all([p1]).then(async (values) => {
+      const data = await values[0].json();
+      setInfo(data);
+    });
+  }, []);
+
+  console.log(info);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main id="main-container">
+      <section id="first-container">
+        <SearchButtons />
+
+          
+        <div id="main-icon">
+
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <div id="temp">
+          {info && info.main.temp}
+          <span id="temp-unit">ºC</span>
+        </div>
+        <div id="description">
+{/*           {info && info.weather.description} */}
+        </div>
+        <div id="date">
+          Today .  Fri, 5Jun
+        </div>
+        <div id="location">
+{/*           {info && info.name} */}
+        </div>
+      </section>
+      <section id="seconf-container">
+        <div id="grades">
+          <button href="#" className="btn-grades">ºC</button>
+          <button href="#" className="btn-grades">ºF</button>
+        </div>
+        <div id="forecast">
+          <div className="fc-card">
+            <h4 className="fc-date">Tomorrow</h4>
+            <div className="fc-icon"></div>
+            <div className="fc-temp">
+              <p className="fc-max-temp">16ºC</p>
+              <p className="fc-min-temp">11ºC</p>
+            </div>
+          </div>
+        </div>
+        <div id="hightlights">
+          <h3>Today&apos;s Hightlights</h3>
+          <div className="hl-card">
+            <h4 className="hl-title">titulo</h4>
+            <p className="hl-data">95</p><span className="unid">mph</span>
+            <div className="hl-visual"></div>
+          </div>
+        </div>
+        <div id="footer">
+          created by Francesco Galiano - devChallenges.io
+        </div>
+      </section>
     </main>
   )
 }
