@@ -14,7 +14,7 @@ const CurrentData = ({ temp, clima, location }) => {
     let mesActual = month[fecha.getMonth()];
 
     return (
-        <div id="currentData">
+        <div>
             <div id="temperatura">
                 <span id="temp">{Math.round(temp)}</span>
                 <span id="temp-unit">ºC</span>

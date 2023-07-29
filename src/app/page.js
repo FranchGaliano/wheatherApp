@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import SearchButtons from '../../components/SearchButtons/SearchButtons';
 import ScreenIcon from '../../components/ScreenIcon/ScreenIcon';
 import CurrentData from '../../components/CurrentData/CurrentData';
+import GradesButtons from '../../components/GradesButtons/GradesButtons';
+import Forecast from '../../components/Forecast/Forecast';
 
 export default function Home() {
   let lon;
@@ -12,18 +14,24 @@ export default function Home() {
   const KEY = "9d5d3012597b909355a2c3e111416127";
   const city = "Lima";
   const [info, setInfo] = useState();
+  const [forecast, setForecast] = useState();
 
   useEffect(() => {
     const p1 = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${KEY}`);
-    console.log(p1);
-    Promise.all([p1]).then(async (values) => {
+    const p2 = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${KEY}`);
+
+    Promise.all([p1, p2]).then(async (values) => {
       const data = await values[0].json();
+      const pronostico = await values[1].json();
+
       setInfo(data);
+      setForecast(pronostico);
     });
+
   }, []);
 
   console.log(info);
-
+  console.log(forecast);
   const handleLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((posicion) => {
@@ -56,20 +64,10 @@ export default function Home() {
         <CurrentData temp={info && info.main.temp} clima={info && info.weather[0].main} location={info && info.name} />
       </section>
       <section id="second-container">
-        <div id="grades">
-          <button href="#" className="btn-grades">ºC</button>
-          <button href="#" className="btn-grades">ºF</button>
-        </div>
-        <div id="forecast">
-          <div className="fc-card">
-            <h4 className="fc-date">Tomorrow</h4>
-            <div className="fc-icon"></div>
-            <div className="fc-temp">
-              <p className="fc-max-temp">16ºC</p>
-              <p className="fc-min-temp">11ºC</p>
-            </div>
-          </div>
-        </div>
+        <GradesButtons />
+        <Forecast forecast={forecast && forecast} />
+
+        
         <div id="hightlights">
           <h3>Today&apos;s Hightlights</h3>
           <div className="hl-card">

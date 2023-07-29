@@ -1,0 +1,25 @@
+#grades {
+    display: flex;
+    justify-content: end;
+    gap: 12px;
+}
+
+.btn-grades {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background: #585676;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #E7E7EB;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 66px;
+}
+
+.active {
+    background: #E7E7EB;
+    color: #110E3C;
+}

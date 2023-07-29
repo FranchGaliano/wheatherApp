@@ -24,6 +24,11 @@
   width: 375px;
 }
 
+#second-container {
+
+  padding: 25px 120px;
+}
+
 /* Pantallas grandes con anchos menores a 1328px (desktops)*/
 @media screen and (max-width: 1327.98px) {}
 
@@ -46,7 +51,11 @@
 }
 
 /* Pantallas muy pequeñas con anchos menores a 480px(móviles en portrait) */
-@media screen and (max-width: 479.98px) {}
+@media screen and (max-width: 479.98px) {
+  #second-container {
+    padding: 50px;
+  }
+}
 
 /* Pantallas muy pequeñas con anchos menores a 320px(móviles en portrait) */
 @media screen and (max-width: 319.98px) {}
