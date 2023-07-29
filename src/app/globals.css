@@ -8,7 +8,7 @@
 }
 
 #main-container {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #100E1D;
   color: #E7E7EB;
   display: flex;
@@ -18,7 +18,7 @@
 #first-container {
   background-color: #1E213A;
   color: #88869D;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   width: 375px;

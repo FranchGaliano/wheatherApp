@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import { useEffect, useState } from "react";
 import SearchButtons from '../../components/SearchButtons/SearchButtons';
+import ScreenIcon from '../../components/ScreenIcon/ScreenIcon';
+import CurrentData from '../../components/CurrentData/CurrentData';
 
 export default function Home() {
   let lon;
@@ -11,7 +13,7 @@ export default function Home() {
   const city = "Lima";
   const [info, setInfo] = useState();
 
-  useEffect(()=>{
+  useEffect(() => {
     const p1 = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${KEY}`);
     console.log(p1);
     Promise.all([p1]).then(async (values) => {
@@ -27,9 +29,9 @@ export default function Home() {
       navigator.geolocation.getCurrentPosition((posicion) => {
         lon = posicion.coords.longitude;
         lat = posicion.coords.latitude;
-  
+
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=${KEY}`;
-  
+
         fetch(url)
           .then((response) => {
             return response.json();
@@ -43,33 +45,17 @@ export default function Home() {
           });
       });
     }
-};
+  };
 
 
   return (
     <main id="main-container">
       <section id="first-container">
         <SearchButtons handleLocation={handleLocation} />
-
-      
-        <div id="main-icon">
-
-        </div>
-        <div id="temp">
-          {info && info.main.temp}
-          <span id="temp-unit">ºC</span>
-        </div>
-        <div id="description">
-{/*           {info && info.weather.description} */}
-        </div>
-        <div id="date">
-          Today .  Fri, 5Jun
-        </div>
-        <div id="location">
-{/*           {info && info.name} */}
-        </div>
+        <ScreenIcon climaPrincipal={info && info.weather[0].main} />
+        <CurrentData temp={info && info.main.temp} clima={info && info.weather[0].main} location={info && info.name} />
       </section>
-      <section id="seconf-container">
+      <section id="second-container">
         <div id="grades">
           <button href="#" className="btn-grades">ºC</button>
           <button href="#" className="btn-grades">ºF</button>
