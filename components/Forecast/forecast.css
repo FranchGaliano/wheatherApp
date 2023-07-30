@@ -6,37 +6,3 @@
     gap: 26px;
 }
 
-.fc-card {
-    background-color: #1E213A;
-    color: #E7E7EB;
-    height: 177px;
-    width: 112px;
-    margin-bottom: 32px;
-}
-
-.fc-date {
-    text-align: center;
-    padding-top: 18px;
-    padding-bottom: 10px;
-}
-
-.fc-icon {
-    display: flex;
-    justify-content: center;
-}
-
-.fc-temp {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    padding-top: 31px;
-}
-
-.fc-max-temp {
-    color: #E7E7EB;
-}
-
-.fc-min-temp {
-    color: #A09FB1;
-}
-

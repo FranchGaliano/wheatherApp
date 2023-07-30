@@ -32,6 +32,7 @@ export default function Home() {
 
   console.log(info);
   console.log(forecast);
+  
   const handleLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((posicion) => {
@@ -39,6 +40,7 @@ export default function Home() {
         lat = posicion.coords.latitude;
 
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=${KEY}`;
+        const localForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=${KEY}`;
 
         fetch(url)
           .then((response) => {
@@ -51,6 +53,19 @@ export default function Home() {
           .catch((error) => {
             console.log(error);
           });
+          
+          fetch(localForecast)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setForecast(data);
+            console.log(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
       });
     }
   };
