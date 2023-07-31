@@ -19,8 +19,6 @@ const CardForecast = ({forecast, indiceArr, first }) => {
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let mesActual = month[fecha.getMonth()];
 
-    console.log("FECHA: "+ fecha);
-
     let urlIcono, ancho, alto, alternate;
     const climaPrincipal = forecast && forecast.list[indiceArr].weather[0].main;
     //Para la imagen de ícono a mostrar
@@ -30,56 +28,48 @@ const CardForecast = ({forecast, indiceArr, first }) => {
         ancho = 203;
         alto = 235;
         alternate = "Thunderstorm Icon";
-        console.log ("Pronóstico tormenta");
         break;
       case "Drizzle":
         urlIcono = llovizna;
         ancho = 203;
         alto = 235;
         alternate = "Drizzle Icon";
-        console.log ("Pronóstico llovizna");
         break;
       case "Rain":
         urlIcono = lluvia;
         ancho = 202;
         alto = 234;
         alternate = "Rain Icon";
-        console.log ("Pronóstico lluvia");
         break;
       case "Snow":
         urlIcono = nieve;
         ancho = 203;
         alto = 169;
         alternate = "Snow Icon";
-        console.log ("Pronóstico nieve");
         break;
       case "Clear":
         urlIcono = limpio;
         ancho = 213;
         alto = 206;
         alternate = "Clear Icon";
-        console.log ("Pronóstico limpio");
         break;
       case "Atmosphere":
         urlIcono = atmosfera;
         ancho = 221;
         alto = 206;
         alternate = "Atmosphere Icon";
-        console.log ("Pronóstico atmosfera");
         break;
       case "Clouds":
         urlIcono = nubes;
         ancho = 203;
         alto = 150;
         alternate = "Clouds Icon";
-        console.log ("Pronóstico nubes");
         break;
       default:
         urlIcono = tormenta;
         ancho = 203;
         alto = 235;
         alternate = "Thunderstorm Icon";
-        console.log ("Por defecto: Pronóstico tormenta");
     }
     
     const cabecera = first ? "Tomorrow" : `${diaSemana}, ${diaActual} ${mesActual}`

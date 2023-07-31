@@ -1,0 +1,99 @@
+#hightlights>h3 {
+    font-size: 24px;
+    font-weight: 700;
+    padding-bottom: 32px;
+}
+
+#hightlights {
+    padding-bottom: 48px;
+}
+
+#hightlights-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 48px;
+}
+
+.hl-card {
+    width: 328px;
+    /* height: 160px; */
+    background-color: #1E213A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 22px;
+}
+
+.hl-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.hl-data {
+    padding-bottom: 12px;
+}
+
+.hl-data-num {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.hl-unid {
+    font-size: 36px;
+    font-weight: 500;
+}
+
+/* Herramientas para ver el viento*/
+#hl-wind-visual {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px;
+}
+
+#circle-navigation {
+    width: 30px;
+    height: 30px;
+    background-color: #626475;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navigation-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/*Herramienta para ver la humedad*/
+#humidity-medida {
+    display: flex;
+    width: 230px;
+    justify-content: space-between;
+}
+
+.humidity-text {
+    font-size: 12px;
+    font-weight: 700;
+    padding-bottom: 2px;
+}
+
+#humidity-barra {
+    width: 230px;
+    height: 8px;
+    border-radius: 25px;
+    background-color: #E7E7EB;
+}
+
+#humidity-value {
+    background-color: #FFEC65;
+    border-radius: 25px;
+    height: 100%;
+}
+
+#humidity-unid {
+    text-align: right;
+}

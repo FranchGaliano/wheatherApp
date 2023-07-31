@@ -7,6 +7,7 @@ import ScreenIcon from '../../components/ScreenIcon/ScreenIcon';
 import CurrentData from '../../components/CurrentData/CurrentData';
 import GradesButtons from '../../components/GradesButtons/GradesButtons';
 import Forecast from '../../components/Forecast/Forecast';
+import Hightlights from '../../components/Hightlights/Hightlights';
 
 export default function Home() {
   let lon;
@@ -81,18 +82,10 @@ export default function Home() {
       <section id="second-container">
         <GradesButtons />
         <Forecast forecast={forecast && forecast} />
-
+        <Hightlights speed={info && info.wind.speed} deg={info && info.wind.deg} humidity={info && info.main.humidity} visibility={info && info.visibility} pressure={info && info.main.pressure} />
         
-        <div id="hightlights">
-          <h3>Today&apos;s Hightlights</h3>
-          <div className="hl-card">
-            <h4 className="hl-title">titulo</h4>
-            <p className="hl-data">95</p><span className="unid">mph</span>
-            <div className="hl-visual"></div>
-          </div>
-        </div>
         <div id="footer">
-          created by Francesco Galiano - devChallenges.io
+          created by <a href="https://linktr.ee/FrancescoGaliano">Francesco Galiano</a> - devChallenges.io
         </div>
       </section>
     </main>

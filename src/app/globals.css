@@ -25,8 +25,25 @@
 }
 
 #second-container {
-
   padding: 25px 120px;
+}
+
+#footer {
+  color: #A09FB1;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#footer > a {
+  color: #A09FB1;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: underline;
 }
 
 /* Pantallas grandes con anchos menores a 1328px (desktops)*/
