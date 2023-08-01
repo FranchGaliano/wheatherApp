@@ -10,6 +10,8 @@ import atmosfera from 'public/LightCloud.png';
 import nubes from 'public/HeavyCloud.png';
 
 const CardForecast = ({forecast, indiceArr, first, units }) => {
+
+    //Obtención de la fecha
     const fecha = new Date(forecast && forecast.list[indiceArr].dt *1000);
     const diaActual = fecha.getDate();
 
@@ -18,6 +20,25 @@ const CardForecast = ({forecast, indiceArr, first, units }) => {
 
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let mesActual = month[fecha.getMonth()];
+
+    //Obtener el valor de temperatura máximo y mínimo de un mismo día
+    let min = 1000;
+    let max = -1000;
+    for (let i = 0; i < 40; i++) {
+      let fechaDia = new Date(forecast && forecast.list[i].dt *1000);
+      if (diaActual === fechaDia.getDate()){
+
+        if (forecast.list[i].main.temp_max > max ){
+          max = forecast.list[i].main.temp_max;
+        }
+
+        if (forecast.list[i].main.temp_min < min ){
+          min = forecast.list[i].main.temp_min;
+        }
+      }
+    }
+
+
 
     let urlIcono, ancho, alto, alternate;
     const climaPrincipal = forecast && forecast.list[indiceArr].weather[0].main;
@@ -71,7 +92,8 @@ const CardForecast = ({forecast, indiceArr, first, units }) => {
         alto = 235;
         alternate = "Thunderstorm Icon";
     }
-    
+
+    //Mostrar Tomorrow si es el primer card
     const cabecera = first ? "Tomorrow" : `${diaSemana}, ${diaActual} ${mesActual}`
 
   return (
@@ -83,10 +105,10 @@ const CardForecast = ({forecast, indiceArr, first, units }) => {
         </div>
         <div className="fc-temp">
             <span className="fc-max-temp">
-                {Math.ceil(forecast && forecast.list[indiceArr].main.temp_max)}{(units==="metric") ? "ºC" : "ºF"}
+                {Math.ceil(max)}{(units==="metric") ? "ºC" : "ºF"}
             </span>
             <span className="fc-min-temp">
-                {Math.floor(forecast && forecast.list[indiceArr].main.temp_min)}{(units==="metric") ? "ºC" : "ºF"}
+                {Math.floor(min)}{(units==="metric") ? "ºC" : "ºF"}
             </span>
         </div>
     </div>
