@@ -16,6 +16,7 @@
 }
 
 .hl-card {
+  
     width: 328px;
     /* height: 160px; */
     background-color: #1E213A;
@@ -53,7 +54,7 @@
     padding: 7px;
 }
 
-#circle-navigation {
+#circle-wind-direction {
     width: 30px;
     height: 30px;
     background-color: #626475;
@@ -63,8 +64,8 @@
     align-items: center;
 }
 
-#navigation-text {
-    font-size: 14px;
+#wind-direction-text {
+    font-size: 16px;
     font-weight: 500;
 }
 

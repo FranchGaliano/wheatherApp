@@ -1,5 +1,4 @@
 "use client";
-import Image from 'next/image';
 
 import { useEffect, useState } from "react";
 import SearchButtons from '../../components/SearchButtons/SearchButtons';
@@ -8,14 +7,16 @@ import CurrentData from '../../components/CurrentData/CurrentData';
 import GradesButtons from '../../components/GradesButtons/GradesButtons';
 import Forecast from '../../components/Forecast/Forecast';
 import Hightlights from '../../components/Hightlights/Hightlights';
+import SearchModal from "../../components/SearchModal/SearchModal";
 
 export default function Home() {
   let lon;
   let lat;
   const KEY = "9d5d3012597b909355a2c3e111416127";
-  const city = "Lima";
+  const [city, setCity] = useState("Lima");
   const [info, setInfo] = useState();
   const [forecast, setForecast] = useState();
+  const [interruptor, setInterruptor] = useState(false);
 
   useEffect(() => {
     const p1 = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${KEY}`);
@@ -29,11 +30,16 @@ export default function Home() {
       setForecast(pronostico);
     });
 
-  }, []);
+  }, [city]);
 
   console.log(info);
   console.log(forecast);
   
+  const handleModal = () => {
+    setInterruptor(!interruptor);
+  }
+
+
   const handleLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((posicion) => {
@@ -71,13 +77,31 @@ export default function Home() {
     }
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    // Obtenemos el valor del botón 
+    setCity(e.target.value);
+    setInterruptor(!interruptor);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    //obtenemos el valor del input
+    let busqueda = e.target[0].value;
+    busqueda ? setCity(busqueda) : handleLocation();
+    //setCity(e.target.value.toLowerCase());
+    setInterruptor(!interruptor);
+  };
+
+  
 
   return (
     <main id="main-container">
-      <section id="first-container">
-        <SearchButtons handleLocation={handleLocation} />
+      <section id="first-container">        
+        <SearchButtons handleLocation={handleLocation} handleModal={handleModal} />
         <ScreenIcon climaPrincipal={info && info.weather[0].main} />
         <CurrentData temp={info && info.main.temp} clima={info && info.weather[0].main} location={info && info.name} />
+        <SearchModal interruptor={interruptor} handleModal={handleModal} handleClick={handleClick} handleSearch={handleSearch} />
       </section>
       <section id="second-container">
         <GradesButtons />

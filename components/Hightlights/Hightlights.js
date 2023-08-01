@@ -17,10 +17,10 @@ const Hightlights = ({speed, deg, humidity, visibility, pressure}) => {
                     <span className="hl-data-num">{Math.round(speed)}</span><span className="hl-unid">mph</span>
                 </div>
                 <div id="hl-wind-visual">
-                    <div id="circle-navigation">
-                        <Image id="icon-navigation" src={iconNavigation} width={18} height={18} alt="icon-navigation"  style= {{ transform: `rotate(${deg}deg` }} />
+                    <div id="circle-wind-direction">
+                        <Image src={iconNavigation} width={18} height={18} alt="icon-navigation"  style= {{ transform: `rotate(${deg}deg` }} />
                     </div>
-                    <span id="navigation-text">{cardinalDirection}</span>
+                    <span id="wind-direction-text">{cardinalDirection}</span>
                 </div>
             </div>
             <div className="hl-card">
