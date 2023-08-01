@@ -16,8 +16,8 @@
 }
 
 .hl-card {
-  
-    width: 328px;
+    width: 46%;
+    min-width: 328px;
     /* height: 160px; */
     background-color: #1E213A;
     display: flex;
@@ -98,3 +98,38 @@
 #humidity-unid {
     text-align: right;
 }
+
+/* Pantallas grandes con anchos menores a 1180px (desktops)*/
+@media screen and (max-width: 1179.98px) {
+    #hightlights-cards {
+        justify-content: center;
+    }
+}
+
+/* Pantallas grandes con anchos menores a 1024px (desktops)*/
+@media screen and (max-width: 1023.98px) {
+    .hl-card {
+        width: 46%;
+    }
+    #hightlights-cards {
+        justify-content: center;
+    }
+}
+
+/* Pantallas medianas con anchos menores a 960px(tablets) */
+@media screen and (max-width: 959.98px) {
+
+}
+
+/* Pantallas pequeñas con anchos menores a 768px(móviles en landscape) */
+@media screen and (max-width: 767.98px) {
+
+}
+
+/* Pantallas muy pequeñas con anchos menores a 480px(móviles en portrait) */
+@media screen and (max-width: 479.98px) {
+
+}
+
+/* Pantallas muy pequeñas con anchos menores a 320px(móviles en portrait) */
+@media screen and (max-width: 319.98px) {}

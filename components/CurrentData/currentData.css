@@ -44,3 +44,16 @@
 #icon-location-on {
     transform: translateY(-2px);
 }
+
+/* Pantallas muy pequeñas con anchos menores a 376px(móviles en portrait) */
+@media screen and (max-width: 375.98px) {
+
+    #temperatura {
+        transform: translateY(-20px);
+    }
+
+    #description {
+        padding: 0 40px 40px 40px;
+    }
+    
+}

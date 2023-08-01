@@ -13,7 +13,7 @@ export default function Home() {
   let lon;
   let lat;
   const KEY = "9d5d3012597b909355a2c3e111416127";
-  const [city, setCity] = useState("Lima");
+  const [city, setCity] = useState("Cusco");
   const [info, setInfo] = useState();
   const [forecast, setForecast] = useState();
   const [interruptor, setInterruptor] = useState(false);
@@ -29,6 +29,7 @@ export default function Home() {
       setInfo(data);
       setForecast(pronostico);
     });
+
 
   }, [city]);
 
@@ -89,11 +90,9 @@ export default function Home() {
     //obtenemos el valor del input
     let busqueda = e.target[0].value;
     busqueda ? setCity(busqueda) : handleLocation();
-    //setCity(e.target.value.toLowerCase());
+
     setInterruptor(!interruptor);
   };
-
-  
 
   return (
     <main id="main-container">

@@ -47,7 +47,11 @@
 }
 
 /* Pantallas grandes con anchos menores a 1328px (desktops)*/
-@media screen and (max-width: 1327.98px) {}
+@media screen and (max-width: 1327.98px) {
+  #second-container {
+    padding: 25px 50px;
+  }
+}
 
 /* Pantallas grandes con anchos menores a 1024px (desktops)*/
 @media screen and (max-width: 1023.98px) {}

@@ -4,11 +4,13 @@
     bottom: 0;
     background-color: #1E213A;
     overflow: hidden;
-    width: 0;
-    transition: all .5s;
+    transform: translate(-110%);
+    /* width: 0; */
+    transition: transform .3s ease-in-out;
 }
 
 #searchModal.mostrar {
+    transform: translate(0);
     width: 459px;
     min-height: 100vh;
 }
@@ -16,7 +18,7 @@
 #close {
     display: flex;
     justify-content: flex-end;
-    padding: 12px 46px;
+    padding: 24px 46px;
 }
 
 #btn-close {
@@ -100,5 +102,42 @@
 }
 
 .btn-menu-simbolo {
-    color: #616475;
+    color: #616475;  
 }
+
+/* Pantallas grandes con anchos menores a 1328px (desktops)*/
+@media screen and (max-width: 1327.98px) {
+    #searchModal.mostrar {
+        width: 375px;
+    }
+    #close {
+        padding: 24px;
+    }
+    .btn-menu {
+
+        padding: 24px;
+    }
+  }
+  
+  /* Pantallas grandes con anchos menores a 1024px (desktops)*/
+  @media screen and (max-width: 1023.98px) {}
+  
+  /* Pantallas medianas con anchos menores a 960px(tablets) */
+  @media screen and (max-width: 959.98px) {
+  
+  }
+  
+  /* Pantallas pequeñas con anchos menores a 768px(móviles en landscape) */
+  @media screen and (max-width: 767.98px) {
+    #searchModal.mostrar {
+        width: 100%;
+    }
+  }
+  
+  /* Pantallas muy pequeñas con anchos menores a 480px(móviles en portrait) */
+  @media screen and (max-width: 479.98px) {
+
+  }
+  
+  /* Pantallas muy pequeñas con anchos menores a 320px(móviles en portrait) */
+  @media screen and (max-width: 319.98px) {}

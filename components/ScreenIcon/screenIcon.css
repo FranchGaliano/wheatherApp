@@ -39,5 +39,15 @@
 
 }
 
+/* Pantallas muy pequeñas con anchos menores a 376px(móviles en portrait) */
+@media screen and (max-width: 375.98px) {
+
+    #screen-nubes {
+        height: 250px;
+        background-size: 150% 100%;
+    }
+    
+}
+
 /* Pantallas muy pequeñas con anchos menores a 320px(móviles en portrait) */
 @media screen and (max-width: 319.98px) {}
