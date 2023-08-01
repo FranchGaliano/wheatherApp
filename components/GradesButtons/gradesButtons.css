@@ -23,3 +23,12 @@
     background: #E7E7EB;
     color: #110E3C;
 }
+
+
+
+/* Pantallas pequeñas con anchos menores a 768px(móviles en landscape) */
+@media screen and (max-width: 767.98px) {
+    #grades {
+        display: none;
+    }
+  }

@@ -102,6 +102,10 @@
 }
 
 .btn-menu-simbolo {
+    color: transparent;  
+}
+
+.btn-menu:hover > .btn-menu-simbolo {
     color: #616475;  
 }
 
@@ -132,6 +136,9 @@
     #searchModal.mostrar {
         width: 100%;
     }
+    .btn-menu-simbolo {
+        color: #616475; 
+    }
   }
   
   /* Pantallas muy pequeñas con anchos menores a 480px(móviles en portrait) */
@@ -140,4 +147,8 @@
   }
   
   /* Pantallas muy pequeñas con anchos menores a 320px(móviles en portrait) */
-  @media screen and (max-width: 319.98px) {}
+  @media screen and (max-width: 319.98px) {
+    #searchModal.mostrar {
+        width: 100%;
+    }
+  }

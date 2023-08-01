@@ -132,4 +132,12 @@
 }
 
 /* Pantallas muy pequeñas con anchos menores a 320px(móviles en portrait) */
-@media screen and (max-width: 319.98px) {}
+@media screen and (max-width: 319.98px) {
+
+    #humidity-barra {
+        width: 200px;
+    }
+    .hl-card {
+        min-width: 220px;
+    }
+}
