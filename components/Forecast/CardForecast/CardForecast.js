@@ -9,7 +9,7 @@ import limpio from 'public/Clear.png';
 import atmosfera from 'public/LightCloud.png';
 import nubes from 'public/HeavyCloud.png';
 
-const CardForecast = ({forecast, indiceArr, first }) => {
+const CardForecast = ({forecast, indiceArr, first, units }) => {
     const fecha = new Date(forecast && forecast.list[indiceArr].dt *1000);
     const diaActual = fecha.getDate();
 
@@ -83,10 +83,10 @@ const CardForecast = ({forecast, indiceArr, first }) => {
         </div>
         <div className="fc-temp">
             <span className="fc-max-temp">
-                {Math.ceil(forecast && forecast.list[indiceArr].main.temp_max)}ºC
+                {Math.ceil(forecast && forecast.list[indiceArr].main.temp_max)}{(units==="metric") ? "ºC" : "ºF"}
             </span>
             <span className="fc-min-temp">
-                {Math.floor(forecast && forecast.list[indiceArr].main.temp_min)}ºC
+                {Math.floor(forecast && forecast.list[indiceArr].main.temp_min)}{(units==="metric") ? "ºC" : "ºF"}
             </span>
         </div>
     </div>

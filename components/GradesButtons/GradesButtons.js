@@ -1,10 +1,10 @@
 import "./gradesButtons.css";
 
-const GradesButtons = () => {
+const GradesButtons = ({handleCelsius, handleFahrenheit}) => {
   return (
     <div id="grades">
-        <button href="#" className="btn-grades active">ºC</button>
-        <button href="#" className="btn-grades">ºF</button>
+        <button href="#" className="btn-grades active" onClick={handleCelsius}>ºC</button>
+        <button href="#" className="btn-grades" onClick={handleFahrenheit}>ºF</button>
     </div>
   )
 }

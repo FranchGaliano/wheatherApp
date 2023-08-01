@@ -2,7 +2,7 @@ import Image from 'next/image';
 import "./currentData.css";
 import iconLocationOn from 'public/location_on.svg';
 
-const CurrentData = ({ temp, clima, location }) => {
+const CurrentData = ({ temp, clima, location, units }) => {
 
     const fecha = new Date();
     const diaActual = fecha.getDate();
@@ -17,7 +17,7 @@ const CurrentData = ({ temp, clima, location }) => {
         <div>
             <div id="temperatura">
                 <span id="temp">{Math.round(temp)}</span>
-                <span id="temp-unit">ºC</span>
+                <span id="temp-unit">{(units==="metric") ? "ºC" : "ºF"}</span>
             </div>
             <div id="description">
                 {clima}

@@ -14,13 +14,14 @@ export default function Home() {
   let lat;
   const KEY = "9d5d3012597b909355a2c3e111416127";
   const [city, setCity] = useState("Cusco");
+  const [grades, setGrades] = useState("metric");
   const [info, setInfo] = useState();
   const [forecast, setForecast] = useState();
   const [interruptor, setInterruptor] = useState(false);
 
   useEffect(() => {
-    const p1 = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${KEY}`);
-    const p2 = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${KEY}`);
+    const p1 = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${grades}&appid=${KEY}`);
+    const p2 = fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${grades}&appid=${KEY}`);
 
     Promise.all([p1, p2]).then(async (values) => {
       const data = await values[0].json();
@@ -31,7 +32,7 @@ export default function Home() {
     });
 
 
-  }, [city]);
+  }, [city, grades]);
 
   console.log(info);
   console.log(forecast);
@@ -47,8 +48,8 @@ export default function Home() {
         lon = posicion.coords.longitude;
         lat = posicion.coords.latitude;
 
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=${KEY}`;
-        const localForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=${KEY}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=${grades}&appid=${KEY}`;
+        const localForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=es&units=${grades}&appid=${KEY}`;
 
         fetch(url)
           .then((response) => {
@@ -94,17 +95,26 @@ export default function Home() {
     setInterruptor(!interruptor);
   };
 
+  const handleCelsius = () => {
+    setGrades("metric");
+  } 
+
+  const handleFahrenheit = () => {
+    setGrades("standard");
+  } 
+
+
   return (
     <main id="main-container">
       <section id="first-container">        
         <SearchButtons handleLocation={handleLocation} handleModal={handleModal} />
         <ScreenIcon climaPrincipal={info && info.weather[0].main} />
-        <CurrentData temp={info && info.main.temp} clima={info && info.weather[0].main} location={info && info.name} />
+        <CurrentData temp={info && info.main.temp} clima={info && info.weather[0].main} location={info && info.name} units={grades} />
         <SearchModal interruptor={interruptor} handleModal={handleModal} handleClick={handleClick} handleSearch={handleSearch} />
       </section>
       <section id="second-container">
-        <GradesButtons />
-        <Forecast forecast={forecast && forecast} />
+        <GradesButtons handleCelsius={handleCelsius} handleFahrenheit={handleFahrenheit} />
+        <Forecast forecast={forecast && forecast} units={grades} />
         <Hightlights speed={info && info.wind.speed} deg={info && info.wind.deg} humidity={info && info.main.humidity} visibility={info && info.visibility} pressure={info && info.main.pressure} />
         
         <div id="footer">
