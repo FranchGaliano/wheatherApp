@@ -113,7 +113,7 @@ export default function Home() {
         <SearchModal interruptor={interruptor} handleModal={handleModal} handleClick={handleClick} handleSearch={handleSearch} />
       </section>
       <section id="second-container">
-        <GradesButtons handleCelsius={handleCelsius} handleFahrenheit={handleFahrenheit} />
+        <GradesButtons handleCelsius={handleCelsius} handleFahrenheit={handleFahrenheit} units={grades} />
         <Forecast forecast={forecast && forecast} units={grades} />
         <Hightlights speed={info && info.wind.speed} deg={info && info.wind.deg} humidity={info && info.main.humidity} visibility={info && info.visibility} pressure={info && info.main.pressure} />
         
